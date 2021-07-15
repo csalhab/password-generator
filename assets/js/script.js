@@ -45,24 +45,58 @@ function generatePasswordButtonClicked() {
 //If no matches are found, null is returned.
 //This also helped:
 //https://www.w3schools.com/jsref/met_document_queryselector.asp
+//this returns button element, which has an id of #generate and assigns it to a variable called generateButton
 var generateButton = document.querySelector("#generate");
+//this adds a listener to variable generateButton, listening for "click" event 
+//and will trigger/call generatePasswordButtonClicked() function when button is clicked
 generateButton.addEventListener("click", generatePasswordButtonClicked);
 
 
 var characterLengthQuestionToUser = "How many characters would you like your password to contain?";
-var informUserOnPasswordLength = "Password length must be at least 8 characters.";
+var informUserOnPasswordLength = "Password length must be at from 8-128 characters.";
 var informUserOkOnSpecialCharacters = "Click OK to confirm including special characters.";
 var informUserOkOnNumericCharacters = "Click OK to confirm including numeric characters.";
 var informUserOkOnLowercaseCharacters = "Click OK to confirm including lowercase characters.";
 var informUserOkOnUppercaseCharacters = "Click OK to confirm including uppercase characters.";
 
 function showPasswordToUser() {
-  console.log("showInfo");
+  console.log("showPasswordToUser function called");
+
+/*
+pseudo code:
+before generating password must do the following:
+a) do series of prompts to user for password criteria
+  i) -how long/how many characters/length of password? (number)
+  i) --only allow 8-128 characters (validation)
+  i) --lower than 8 or higher than 128
+  i) ----message: the number has to be from 8-128 characters
+b) does user want to use special characters? (boolean)
+c) does user want to use numeric characters? (boolean)
+d) does user want to use lowercase? (boolean)
+e) does user want to use uppercase? (boolean)
+f) check that at least one character type was selected
+  i) -if not? restart the prompts
+*/
+
+  //generate password:
+  var password = generatePassword();
 
   //selected password textarea and assigned it to a variable
   var passwordText = document.querySelector("#password");
-  //used variable to target 
-  passwordText.value = "jfjfjfieieio00999";
+  //used variable to target element's value property and assigned password
+  //passwordText.value = "jfjfjfieieio00999";
+  passwordText.value = password;
+}
+
+/*
+pseudo code:
+combine the selected lists into a big list
+randomly select however many characters the user told us to use
+place those randomly selected into a new string
+return this new string
+*/
+function generatePassword() {
+
 }
 
 
