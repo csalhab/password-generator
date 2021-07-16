@@ -18,6 +18,8 @@ var optionsAlphabetUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");//26 lengt
 
 var pswd = "";
 
+var noSetsPickedMessage = "You must select at least 1 set of characters."
+
 //echoing out confirming my options arrays indicies and their values and length:
 //console.log(optionsAlphabetLowerCase);
 //console.log(optionsAlphabetUpperCase);
@@ -157,6 +159,11 @@ function showPasswordToUser() {
       //passwordText.value = "jfjfjfieieio00999";
       passwordText.value = password;
 
+    } else {
+        //User did not pick any of the different character set options
+        alert(noSetsPickedMessage);
+        pswd = ""; //reset pswd to empty
+        showPasswordToUser();
     }
 
   } else {
