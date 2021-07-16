@@ -188,6 +188,7 @@ function generatePassword(charComboArray, pswdCharacterLength) {
   console.log(charComboArray.length);
 
 
+  //var pswd = "";
 
   for (var i=1; i <= pswdCharacterLength; i++) {
     console.log("counter num user input: " + pswdCharacterLength);
@@ -201,11 +202,19 @@ function generatePassword(charComboArray, pswdCharacterLength) {
 
     //use randomIndexValueWithinRange as index to use to extract out of charComboArray
     //& store the value of that index into variable:
-    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
-    var pwsd = charComboArray[randomIndexValueWithinRange];
+    var pwsdCharacter = charComboArray[randomIndexValueWithinRange];
     console.log("randomIndexValueWithinRange: " + randomIndexValueWithinRange);
-    console.log("using randomIndexValueWithinRange, extracted from charComboArray: " + pwsd);
+    console.log("using randomIndexValueWithinRange, extracted from charComboArray: " + pwsdCharacter);
+    console.log("pwsdCharacter is typeof: " + typeof pwsdCharacter);
+
+    //add that pswdCharacter randomly picked to a string
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/concat
+    //pswd.concat(pwsdCharacter);
+    //console.log("pswd: " + pswd);
+    console.log(pwsd + pwsdCharacter);
+
   }
+  //return pswd;
 
 }
 
