@@ -142,6 +142,18 @@ function showPasswordToUser() {
         charactersCombo = charactersCombo.concat(optionsAlphabetUpperCase);
         console.log(charactersCombo);
       }
+
+      //generate password, 
+      //passing in charactersCombo array of all chars user selected
+      //and the passwordCharacterLength user provided
+      var password = generatePassword(charactersCombo, passwordCharacterLength);
+
+      //selected password textarea and assigned it to a variable
+      var passwordText = document.querySelector("#password");
+      //used variable to target element's value property and assigned password
+      //passwordText.value = "jfjfjfieieio00999";
+      passwordText.value = password;
+
     }
 
   } else {
@@ -153,15 +165,6 @@ function showPasswordToUser() {
     window.alert(informUserOnPasswordLength);
 
   }
-
-  //generate password:
-  var password = generatePassword();
-
-  //selected password textarea and assigned it to a variable
-  var passwordText = document.querySelector("#password");
-  //used variable to target element's value property and assigned password
-  passwordText.value = "jfjfjfieieio00999";
-  //passwordText.value = password;
 }
 
 /*
@@ -171,7 +174,38 @@ randomly select however many characters the user told us to use
 place those randomly selected into a new string
 return this new string
 */
-function generatePassword() {
+function generatePassword(charComboArray, pswdCharacterLength) {
+
+  //I started thinking about out of bounds error in Javascript
+  //but found:
+  //"JavaScript arrays don't really have a concept of size. 
+  //You can try to retrieve an element from any position in the array, 
+  //and if no element exists it will return undefined . 
+  //There is no such thing as an out of bounds error."
+  //But for my purposes here, only up to length-1 index value can be 
+  //randomly selected, so I need a range to work with.
+
+  console.log(charComboArray.length);
+
+
+
+  for (var i=1; i <= pswdCharacterLength; i++) {
+    console.log("counter num user input: " + pswdCharacterLength);
+    //select randomly:
+    //https://www.w3schools.com/js/js_random.asp
+    //Example, Returns a random integer from 0 to 100:
+    //var randomIndexValueWithinRange = Math.floor(Math.random() * 101);
+    //Returns a random integer from 0 to my/combo's range
+    //& stores it into randomIndexValueWithinRange variable:
+    var randomIndexValueWithinRange = Math.floor(Math.random() * charComboArray.length);
+
+    //use randomIndexValueWithinRange as index to use to extract out of charComboArray
+    //& store the value of that index into variable:
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push
+    var pwsd = charComboArray[randomIndexValueWithinRange];
+    console.log("randomIndexValueWithinRange: " + randomIndexValueWithinRange);
+    console.log("using randomIndexValueWithinRange, extracted from charComboArray: " + pwsd);
+  }
 
 }
 
