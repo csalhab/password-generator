@@ -1,6 +1,29 @@
 # 03 JavaScript: Password Generator
 
-## Your Task
+## Description
+
+This repo is homework3 which was all about a Password Generator. 
+The app's interface allows exchanges to be made with it via prompts, confirms and alerts.
+It'll guide you if you do not provide the correct input when requested. 
+If you do provide correctly, though, you'll be given a new random and secured password to use.
+
+
+## Deployed Application
+
+[Click here see the deployed Password Generator application here](https://csalhab.github.io/password-generator/)
+
+
+## Table of Contents on Homework3
+
+- [Task](#task)
+- [User Story](#user)
+- [Acceptance Criteria](#acceptance)
+- [Deployed Application](#deployed)
+- [Mock Up](#mock)
+- [Grading Requirements](#grading)
+- [Review](#review)
+
+## Task
 
 This week’s homework requires you to modify starter code to create an application that enables employees to generate random passwords based on criteria that they’ve selected. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean and polished, responsive user interface that adapts to multiple screen sizes.
 
