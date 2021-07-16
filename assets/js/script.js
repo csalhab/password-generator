@@ -53,7 +53,7 @@ generateButton.addEventListener("click", generatePasswordButtonClicked);
 
 
 var characterLengthQuestionToUser = "How many characters would you like your password to contain?";
-var informUserOnPasswordLength = "Password length must be at from 8-128 characters.";
+var informUserOnPasswordLength = "Password length must be from 8-128 characters.";
 var informUserOkOnSpecialCharacters = "Click OK to confirm including special characters.";
 var informUserOkOnNumericCharacters = "Click OK to confirm including numeric characters.";
 var informUserOkOnLowercaseCharacters = "Click OK to confirm including lowercase characters.";
@@ -78,14 +78,37 @@ f) check that at least one character type was selected
   i) -if not? restart the prompts
 */
 
+//a) i) -how long/how many characters/length of password? (number)
+//MDN Window for .prompt
+//https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt
+//Cancel button returns empty string, so it too will inform user of length
+//cast the string returned to number
+var passwordCharacterLength = Number(window.prompt(characterLengthQuestionToUser));
+console.log("passwordCharacterLength: " + passwordCharacterLength);
+//console.log("passwordCharacterLength.length: " + passwordCharacterLength.length);
+
+//a) i) --only allow 8-128 characters (validation)
+if (passwordCharacterLength >= 8 && passwordCharacterLength <= 128) {
+  //handle special characters
+  //handle numeric characters
+  //handle lowercase characters
+  //handle uppercase characters
+  //check that at least one character type was selected
+} else {
+  //didn't use prompt here because need to be just informative to user, so used window.alert
+  //https://developer.mozilla.org/en-US/docs/Web/API/Window/alert
+  window.alert(informUserOnPasswordLength);
+
+}
+
   //generate password:
   var password = generatePassword();
 
   //selected password textarea and assigned it to a variable
   var passwordText = document.querySelector("#password");
   //used variable to target element's value property and assigned password
-  //passwordText.value = "jfjfjfieieio00999";
-  passwordText.value = password;
+  passwordText.value = "jfjfjfieieio00999";
+  //passwordText.value = password;
 }
 
 /*
