@@ -11,10 +11,10 @@
 //But I removed space , double quote ", single quote ', comma ,, period ., forward slash /, backslash \, semi-colon :, colon ;, tickmark `, not allowing them to be a special character here.
 
 //building arrays of options user has avaiable to select from:
-var optionsAlphabetLowerCase = "abcdefghijklmnopqrstuvwxyz".split("");//26 length
-var optionsAlphabetUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");//26 length
 var optionsSpecialCharacters = "!#$%&()*+-<=>?@[]^_{|}~".split(""); //my set has 23 items/length, 10 less than site leveraged due to removals
 var optionsNumbers = "0123456789".split("");
+var optionsAlphabetLowerCase = "abcdefghijklmnopqrstuvwxyz".split("");//26 length
+var optionsAlphabetUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");//26 length
 
 //echoing out confirming my options arrays indicies and their values and length:
 //console.log(optionsAlphabetLowerCase);
@@ -51,7 +51,7 @@ var generateButton = document.querySelector("#generate");
 //and will trigger/call generatePasswordButtonClicked() function when button is clicked
 generateButton.addEventListener("click", generatePasswordButtonClicked);
 
-
+//setup interactions/questions/info to user
 var characterLengthQuestionToUser = "How many characters would you like your password to contain?";
 var informUserOnPasswordLength = "Password length must be from 8-128 characters.";
 var informUserOkOnSpecialCharacters = "Click OK to confirm including special characters.";
@@ -113,6 +113,36 @@ function showPasswordToUser() {
     console.log("isUpperCaseCharacters: " + isUpperCaseCharacters);
 
     //check that at least one character type was selected
+    if (isSpecialCharacters || isNumericCharacters || isLowerCaseCharacters || isUpperCaseCharacters) {
+      console.log("at least 1 char type was selected!!");
+
+      //this will hold characters from the different types that the user said yes to
+      var charactersCombo = [];
+
+      //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat
+      
+      if (isSpecialCharacters) {
+        //https://www.codegrepper.com/code-examples/javascript/copy+from+one+array+to+another+empty+array+in+javascript
+        //charactersCombo = Array.from(optionsSpecialCharacters);
+        charactersCombo = charactersCombo.concat(optionsSpecialCharacters);
+        console.log(charactersCombo);
+      }
+
+      if (isNumericCharacters) {
+        charactersCombo = charactersCombo.concat(optionsNumbers);
+        console.log(charactersCombo);
+      }
+
+      if (isLowerCaseCharacters) {
+        charactersCombo = charactersCombo.concat(optionsAlphabetLowerCase);
+        console.log(charactersCombo);
+      }
+
+      if (isUpperCaseCharacters) {
+        charactersCombo = charactersCombo.concat(optionsAlphabetUpperCase);
+        console.log(charactersCombo);
+      }
+    }
 
   } else {
 
