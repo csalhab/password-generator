@@ -16,6 +16,8 @@ var optionsNumbers = "0123456789".split("");
 var optionsAlphabetLowerCase = "abcdefghijklmnopqrstuvwxyz".split("");//26 length
 var optionsAlphabetUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");//26 length
 
+var pswd = "";
+
 //echoing out confirming my options arrays indicies and their values and length:
 //console.log(optionsAlphabetLowerCase);
 //console.log(optionsAlphabetUpperCase);
@@ -28,6 +30,7 @@ var optionsAlphabetUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");//26 lengt
 //for this to work have to add onclick="generatePasswordButtonClicked()" to <button id="generate"
 function generatePasswordButtonClicked() {
   console.log("Generate Password button on HTML page was clicked!");
+  pswd = ""; //reset pswd to empty (else click to gen again, next pswd concat to last pswd)
   showPasswordToUser();
 }
 
@@ -187,9 +190,6 @@ function generatePassword(charComboArray, pswdCharacterLength) {
 
   console.log(charComboArray.length);
 
-
-  //var pswd = "";
-
   for (var i=1; i <= pswdCharacterLength; i++) {
     console.log("counter num user input: " + pswdCharacterLength);
     //select randomly:
@@ -202,19 +202,20 @@ function generatePassword(charComboArray, pswdCharacterLength) {
 
     //use randomIndexValueWithinRange as index to use to extract out of charComboArray
     //& store the value of that index into variable:
-    var pwsdCharacter = charComboArray[randomIndexValueWithinRange];
+    var pswdCharacter = charComboArray[randomIndexValueWithinRange];
     console.log("randomIndexValueWithinRange: " + randomIndexValueWithinRange);
-    console.log("using randomIndexValueWithinRange, extracted from charComboArray: " + pwsdCharacter);
-    console.log("pwsdCharacter is typeof: " + typeof pwsdCharacter);
+    console.log("using randomIndexValueWithinRange, extracted from charComboArray: " + pswdCharacter);
+    console.log("pswdCharacter is typeof: " + typeof pswdCharacter);
 
     //add that pswdCharacter randomly picked to a string
     //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/concat
-    //pswd.concat(pwsdCharacter);
-    //console.log("pswd: " + pswd);
-    console.log(pwsd + pwsdCharacter);
+    pswd = pswd.concat(pswdCharacter);
+    console.log("pswd: " + pswd);
+    //console.log(pswd + pswdCharacter);
 
   }
-  //return pswd;
+  
+  return pswd;
 
 }
 
