@@ -62,44 +62,67 @@ var informUserOkOnUppercaseCharacters = "Click OK to confirm including uppercase
 function showPasswordToUser() {
   console.log("showPasswordToUser function called");
 
-/*
-pseudo code:
-before generating password must do the following:
-a) do series of prompts to user for password criteria
-  i) -how long/how many characters/length of password? (number)
-  i) --only allow 8-128 characters (validation)
-  i) --lower than 8 or higher than 128
-  i) ----message: the number has to be from 8-128 characters
-b) does user want to use special characters? (boolean)
-c) does user want to use numeric characters? (boolean)
-d) does user want to use lowercase? (boolean)
-e) does user want to use uppercase? (boolean)
-f) check that at least one character type was selected
-  i) -if not? restart the prompts
-*/
+  /*
+  pseudo code:
+  before generating password must do the following:
+  a) do series of prompts to user for password criteria
+    i) -how long/how many characters/length of password? (number)
+    i) --only allow 8-128 characters (validation)
+    i) --lower than 8 or higher than 128
+    i) ----message: the number has to be from 8-128 characters
+  b) does user want to use special characters? (boolean)
+  c) does user want to use numeric characters? (boolean)
+  d) does user want to use lowercase? (boolean)
+  e) does user want to use uppercase? (boolean)
+  f) check that at least one character type was selected
+    i) -if not? restart the prompts
+    */
 
-//a) i) -how long/how many characters/length of password? (number)
-//MDN Window for .prompt
-//https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt
-//Cancel button returns empty string, so it too will inform user of length
-//cast the string returned to number
-var passwordCharacterLength = Number(window.prompt(characterLengthQuestionToUser));
-console.log("passwordCharacterLength: " + passwordCharacterLength);
-//console.log("passwordCharacterLength.length: " + passwordCharacterLength.length);
+  //a) i) -how long/how many characters/length of password? (number)
+  //MDN Window for .prompt
+  //https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt
+  //Cancel button returns empty string, so it too will inform user of length
+  //cast the string returned to number
+  var passwordCharacterLength = Number(window.prompt(characterLengthQuestionToUser));
+  console.log("passwordCharacterLength: " + passwordCharacterLength);
+  //console.log("passwordCharacterLength.length: " + passwordCharacterLength.length);
 
-//a) i) --only allow 8-128 characters (validation)
-if (passwordCharacterLength >= 8 && passwordCharacterLength <= 128) {
-  //handle special characters
-  //handle numeric characters
-  //handle lowercase characters
-  //handle uppercase characters
-  //check that at least one character type was selected
-} else {
-  //didn't use prompt here because need to be just informative to user, so used window.alert
-  //https://developer.mozilla.org/en-US/docs/Web/API/Window/alert
-  window.alert(informUserOnPasswordLength);
+  //a) i) --only allow 8-128 characters (validation)
+  if (passwordCharacterLength >= 8 && passwordCharacterLength <= 128) {
 
-}
+    //for these next checks, use window.confirm since no text input required by user, 
+    //just cancel/no or Ok buttons/responses, returns boolean
+    //https://www.w3schools.com/jsref/met_win_confirm.asp
+    //"A confirm box is often used if you want the user to verify or accept something."
+    //The confirm() method returns true if the user clicked "OK", and false otherwise.
+
+    //handle special characters
+    var isSpecialCharacters = window.confirm(informUserOkOnSpecialCharacters); //boolean
+    console.log("isSpecialCharacters: " + isSpecialCharacters);
+
+    //handle numeric characters
+    var isNumericCharacters = window.confirm(informUserOkOnNumericCharacters); //boolean
+    console.log("isNumericCharacters: " + isNumericCharacters);
+
+    //handle lowercase characters
+    var isLowerCaseCharacters = window.confirm(informUserOkOnLowercaseCharacters); //boolean
+    console.log("isLowerCaseCharacters: " + isLowerCaseCharacters);
+
+    //handle uppercase characters
+    var isUpperCaseCharacters = window.confirm(informUserOkOnUppercaseCharacters); //boolean
+    console.log("isUpperCaseCharacters: " + isUpperCaseCharacters);
+
+    //check that at least one character type was selected
+
+  } else {
+
+    //didn't use prompt here because need to be just informative to user, so used window.alert
+    //https://developer.mozilla.org/en-US/docs/Web/API/Window/alert
+    //this informs user they didn't enter a proper value in the 
+    //range (or even a number) or if they canceled trying to bypass
+    window.alert(informUserOnPasswordLength);
+
+  }
 
   //generate password:
   var password = generatePassword();
