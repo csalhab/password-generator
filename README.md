@@ -14,10 +14,10 @@ If you do provide correctly, though, you'll be given a new random and secured pa
 ## Table of Contents on Homework3
 
 - [Task](#task)
-- [User Story](#user)
-- [Acceptance Criteria](#acceptance)
+- [User Story](#user-story)
+- [Acceptance Criteria](#acceptance-criteria)
 - [Mock Up](#mock)
-- [Grading Requirements](#grading)
+- [Grading Requirements](#grading-requirements)
 - [Review](#review)
 
 ## Task
